@@ -5,9 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var express_1 = __importDefault(require("express"));
 var body_parser_1 = require("body-parser");
+var cors_1 = __importDefault(require("cors"));
 var routesProvider_1 = __importDefault(require("../app/providers/routesProvider"));
 var app = (0, express_1["default"])();
 //Définir ici les middleware personnalisé
+app.use(cors_1["default"]);
 //display all request
 app.use(function (req, res, next) {
     console.log("Request on: " + req.originalUrl);
