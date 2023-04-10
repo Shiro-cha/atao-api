@@ -59,10 +59,18 @@ export default {
   },
   getColoc:function(req:any,res:any){
     const id_coloc:string=req.body.id_coloc;
-
-    User.find({id_coloc:id_coloc}).then(function(users){
+    if(id_coloc){
+        
+        User.find({id_coloc:id_coloc}).then(function(users){
       res.status(200).json(users)
     })
+    
+    }else{
+    
+    res.status(404).json({message:"no data"})
+    
+    }
+    
 
   },
 
