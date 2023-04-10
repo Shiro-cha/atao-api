@@ -9,7 +9,7 @@ var cors_1 = __importDefault(require("cors"));
 var routesProvider_1 = __importDefault(require("../app/providers/routesProvider"));
 var app = (0, express_1["default"])();
 //Définir ici les middleware personnalisé
-app.use(cors_1["default"]);
+app.use((0, cors_1["default"])());
 //display all request
 app.use(function (req, res, next) {
     console.log("Request on: " + req.originalUrl);
