@@ -7,17 +7,28 @@ var User_1 = __importDefault(require("../models/User"));
 exports["default"] = {
     //login handler
     authUser: function (req, res) {
-        var user_info = {
-            "email": req.body.email,
-            "mot_de_passe": req.body.mot_de_passe
-        };
-        User_1["default"].find(user_info).then(function (users) {
-            if (users.length != 0 && users.length != -1) {
-                res.status(200).json(users[0]);
+        if (!req.body || typeof req.body !== 'object') {
+            res.status(400).json({ message: 'Invalid request body' });
+            return;
+        }
+        var _a = req.body, email = _a.email, password = _a.password;
+        User_1["default"].findOne({ email: email }).then(function (user) {
+            if (!user) {
+                // User not found
+                res.status(401).json({ message: 'Invalid username or password' });
+                return;
             }
-            else {
-                res.status(401).json({ message: users });
+            // Compare password hash/encryption
+            if (password !== user.mot_de_passe) {
+                // Password doesn't match
+                res.status(401).json({ message: 'Invalid username or password' });
+                return;
             }
+            // Authentication successful
+            res.status(200).json(user);
+        })["catch"](function (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
         });
     },
     //signup handler
