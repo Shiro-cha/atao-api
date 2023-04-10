@@ -16,7 +16,7 @@ exports["default"] = {
                 res.status(200).json(users[0]);
             }
             else {
-                res.status(200).json({ message: "No data" });
+                res.status(401).json({ message: users });
             }
         });
     },
