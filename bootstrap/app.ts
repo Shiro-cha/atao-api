@@ -8,7 +8,8 @@ const app:Express = express();
 
 //Définir ici les middleware personnalisé
 
-app.use(cors());
+app.use(cors({origin: '*'}));
+
 
 //display all request
 app.use(function(req,res,next){
