@@ -119,8 +119,13 @@ exports["default"] = {
     },
     getColoc: function (req, res) {
         var id_coloc = req.body.id_coloc;
-        User_1["default"].find({ id_coloc: id_coloc }).then(function (users) {
-            res.status(200).json(users);
-        });
+        if (id_coloc) {
+            User_1["default"].find({ id_coloc: id_coloc }).then(function (users) {
+                res.status(200).json(users);
+            });
+        }
+        else {
+            res.status(404).json({ message: "no data" });
+        }
     }
 };

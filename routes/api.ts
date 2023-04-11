@@ -28,6 +28,7 @@ const router:Router = Router();
     router.post("/create-task",Taches.createTask);
     router.post("/add-to-task",Taches.addToTask);
     router.post("/all-task",Taches.allTask);
+    router.post("/validate-task",Taches.validateTask);
     router.post("/remind-coloc",Taches.remindColoc);
     router.post("/get-remind",Taches.getRemind);
 

@@ -70,6 +70,17 @@ export default {
     })
 
   },
+  validateTask:function(req:any,res:any){
+    const id_task:string = req.body.id_task
+
+    Taches.findById(id_task).then(async function(tache) {
+    
+        tache.etat = "complete";
+      await tache.save();
+      res.status(200).json(tache);
+    })
+
+  },
   remindColoc:async function(req:any,res:any){
       const rappelle_info = {
      id_tache: req.body.id_tache,

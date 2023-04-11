@@ -24,6 +24,7 @@ router.post("/get-coloc", ColocController_1["default"].getColoc);
 router.post("/create-task", TacheController_1["default"].createTask);
 router.post("/add-to-task", TacheController_1["default"].addToTask);
 router.post("/all-task", TacheController_1["default"].allTask);
+router.post("/validate-task", TacheController_1["default"].validateTask);
 router.post("/remind-coloc", TacheController_1["default"].remindColoc);
 router.post("/get-remind", TacheController_1["default"].getRemind);
 exports["default"] = router;

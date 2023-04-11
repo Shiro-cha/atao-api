@@ -5,5 +5,6 @@ exports["default"] = (0, mongoose_1.model)("tache", new mongoose_1.Schema({
     "titre": { type: String },
     "start": { type: String },
     "end": { type: String },
-    "type": { type: String }
+    "type": { type: String },
+    "etat": { type: String }
 }));

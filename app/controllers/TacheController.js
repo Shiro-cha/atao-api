@@ -125,6 +125,24 @@ exports["default"] = {
             res.status(200).json(taches);
         });
     },
+    validateTask: function (req, res) {
+        var id_task = req.body.id_task;
+        Taches_1["default"].findById(id_task).then(function (tache) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            tache.etat = "complete";
+                            return [4 /*yield*/, tache.save()];
+                        case 1:
+                            _a.sent();
+                            res.status(200).json(tache);
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        });
+    },
     remindColoc: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var rappelle_info, new_rappelle;

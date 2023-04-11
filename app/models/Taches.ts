@@ -5,6 +5,7 @@ export default model("tache",new Schema({
   "titre":{type:String},
   "start":{type:String},
   "end":{type:String},
-  "type":{type:String}
+  "type":{type:String},
+  "etat":{type:String}
 
 }));
