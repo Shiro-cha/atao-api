@@ -47,13 +47,17 @@ export default {
         User.findById(id_user).then( function(user){
           //send response to the client
           user.id_coloc = coloc._id.toString()
-           user.save()
+           user.save().then(async function(){
+           
+            res.status(200).json(coloc);
+           
+           });
 
         })
       });
-      res.status(200).json(coloc);
+      
     });
-
+    
 
 
   },

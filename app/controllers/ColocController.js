@@ -90,10 +90,16 @@ exports["default"] = {
                 User_1["default"].findById(id_user).then(function (user) {
                     //send response to the client
                     user.id_coloc = coloc._id.toString();
-                    user.save();
+                    user.save().then(function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                res.status(200).json(coloc);
+                                return [2 /*return*/];
+                            });
+                        });
+                    });
                 });
             });
-            res.status(200).json(coloc);
         });
     },
     getColoc: function (req, res) {
