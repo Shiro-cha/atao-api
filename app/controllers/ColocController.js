@@ -85,36 +85,25 @@ exports["default"] = {
         var id_members = req.body.id_members;
         var id_coloc = req.body.id_coloc;
         Coloc_1["default"].findById(id_coloc).then(function (coloc) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: 
-                        //send response to the client
-                        return [4 /*yield*/, id_members.forEach(function (id_user) {
-                                User_1["default"].findById(id_user).then(function (user) {
-                                    return __awaiter(this, void 0, void 0, function () {
-                                        return __generator(this, function (_a) {
-                                            switch (_a.label) {
-                                                case 0:
-                                                    //send response to the client
-                                                    user.id_coloc = coloc._id.toString();
-                                                    return [4 /*yield*/, user.save()];
-                                                case 1:
-                                                    _a.sent();
-                                                    return [2 /*return*/];
-                                            }
-                                        });
-                                    });
-                                });
-                            })];
-                        case 1:
-                            //send response to the client
-                            _a.sent();
-                            res.status(200).json(coloc);
-                            return [2 /*return*/];
-                    }
+            //send response to the client
+            id_members.forEach(function (id_user) {
+                User_1["default"].findById(id_user).then(function (user) {
+                    return __awaiter(this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    //send response to the client
+                                    user.id_coloc = coloc._id.toString();
+                                    return [4 /*yield*/, user.save()];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 });
             });
+            res.status(200).json(coloc);
         });
     },
     getColoc: function (req, res) {

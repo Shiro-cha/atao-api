@@ -41,9 +41,9 @@ export default {
     const id_members:string[] = req.body.id_members;
     const id_coloc:string = req.body.id_coloc;
 
-    Coloc.findById(id_coloc).then(async function(coloc){
+    Coloc.findById(id_coloc).then( function(coloc){
       //send response to the client
-      await id_members.forEach(id_user => {
+       id_members.forEach(id_user => {
         User.findById(id_user).then(async function(user){
           //send response to the client
           user.id_coloc = coloc._id.toString()
