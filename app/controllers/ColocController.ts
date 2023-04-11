@@ -44,10 +44,10 @@ export default {
     Coloc.findById(id_coloc).then( function(coloc){
       //send response to the client
        id_members.forEach(id_user => {
-        User.findById(id_user).then(async function(user){
+        User.findById(id_user).then( function(user){
           //send response to the client
           user.id_coloc = coloc._id.toString()
-          await user.save()
+           user.save()
 
         })
       });
